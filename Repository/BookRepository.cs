@@ -25,6 +25,7 @@ namespace CSVLabOne.Repository
                 var records = csv.GetRecords<Book>();
                 foreach (var r in records)
                 {
+                    // не может найти поле ID !!
                     outp.Add(new Book(){Author = r.Author, Id = r.Id, Publisher = r.Publisher, Name = r.Name, Year = r.Year});
                 }
             }
