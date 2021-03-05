@@ -31,13 +31,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.update_Button = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.create_Button = new System.Windows.Forms.Button();
+            this.labelLog = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,10 +58,10 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Author,
+            this.NameA,
             this.Year,
             this.IdPub,
-            this.Publisher,
-            this.NameA});
+            this.Publisher});
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -70,7 +71,7 @@
             // 
             // update_Button
             // 
-            this.update_Button.Location = new System.Drawing.Point(638, 438);
+            this.update_Button.Location = new System.Drawing.Point(931, 412);
             this.update_Button.Name = "update_Button";
             this.update_Button.Size = new System.Drawing.Size(87, 30);
             this.update_Button.TabIndex = 2;
@@ -78,62 +79,75 @@
             this.update_Button.UseVisualStyleBackColor = true;
             this.update_Button.Click += new System.EventHandler(this.update_Button_Click);
             // 
-            // richTextBox1
+            // create_Button
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 438);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(556, 99);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.create_Button.Location = new System.Drawing.Point(902, 462);
+            this.create_Button.Name = "create_Button";
+            this.create_Button.Size = new System.Drawing.Size(116, 25);
+            this.create_Button.TabIndex = 4;
+            this.create_Button.Text = "Новый файл";
+            this.create_Button.UseVisualStyleBackColor = true;
+            this.create_Button.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // labelLog
+            // 
+            this.labelLog.AutoSize = true;
+            this.labelLog.Location = new System.Drawing.Point(645, 539);
+            this.labelLog.Name = "labelLog";
+            this.labelLog.Size = new System.Drawing.Size(36, 17);
+            this.labelLog.TabIndex = 5;
+            this.labelLog.Text = "Log:";
             // 
             // Id
             // 
             this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
+            this.Id.MinimumWidth = 80;
             this.Id.Name = "Id";
-            this.Id.Width = 125;
+            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Id.Width = 90;
             // 
             // Author
             // 
             this.Author.HeaderText = "Автор";
-            this.Author.MinimumWidth = 6;
+            this.Author.MinimumWidth = 120;
             this.Author.Name = "Author";
-            this.Author.Width = 125;
+            this.Author.Width = 120;
+            // 
+            // NameA
+            // 
+            this.NameA.HeaderText = "Название";
+            this.NameA.MinimumWidth = 125;
+            this.NameA.Name = "NameA";
+            this.NameA.Width = 125;
             // 
             // Year
             // 
             this.Year.HeaderText = "Год";
-            this.Year.MinimumWidth = 6;
+            this.Year.MinimumWidth = 80;
             this.Year.Name = "Year";
-            this.Year.Width = 125;
+            this.Year.Width = 80;
             // 
             // IdPub
             // 
-            this.IdPub.HeaderText = "Id издателя";
-            this.IdPub.MinimumWidth = 6;
+            this.IdPub.HeaderText = "PubId издателя";
+            this.IdPub.MinimumWidth = 80;
             this.IdPub.Name = "IdPub";
-            this.IdPub.Width = 125;
+            this.IdPub.Width = 80;
             // 
             // Publisher
             // 
             this.Publisher.HeaderText = "Издатель";
-            this.Publisher.MinimumWidth = 6;
+            this.Publisher.MinimumWidth = 120;
             this.Publisher.Name = "Publisher";
-            this.Publisher.Width = 125;
-            // 
-            // NameA
-            // 
-            this.NameA.HeaderText = "Имя";
-            this.NameA.MinimumWidth = 6;
-            this.NameA.Name = "NameA";
-            this.NameA.Width = 125;
+            this.Publisher.Width = 120;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 565);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.labelLog);
+            this.Controls.Add(this.create_Button);
             this.Controls.Add(this.update_Button);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
@@ -141,6 +155,7 @@
             this.Text = "CSV CRUD";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,13 +164,14 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button update_Button;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button create_Button;
+        private System.Windows.Forms.Label labelLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPub;
         private System.Windows.Forms.DataGridViewTextBoxColumn Publisher;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameA;
     }
 }
 

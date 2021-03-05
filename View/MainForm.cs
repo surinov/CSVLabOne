@@ -6,6 +6,7 @@ using CSVLabOne.View;
 
 namespace CSVLabOne
 {
+    public delegate void AddBook(Book book);
     public partial class Form1 : Form
     {
         public Form1()
@@ -15,33 +16,43 @@ namespace CSVLabOne
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var addForm = new AddItem();
+            var addForm = new AddItem(AddBook);
             addForm.Show();
-            /*var csv = new CSVWriter();
-            csv.Main();
-            //var book = new Book() { Author = }
-            var id = int.Parse(dataGridView1[Id.Index, 0].Value.ToString());
-            var name = dataGridView1[NameA.Index, 0].Value.ToString();
-            var author = dataGridView1[Author.Index, 0].Value.ToString();
-            var year = int.Parse(dataGridView1[Year.Index, 0].Value.ToString());
-            var pubid = int.Parse(dataGridView1[IdPub.Index, 0].Value.ToString());
-            var publisher = dataGridView1[Publisher.Index, 0].Value.ToString();
-            var book = new Book()
+        }
+
+        private void AddBook(Book book)
+        {
+            var repo = new BookRepository();
+            if (repo.AddBook(book))
             {
-                Author = author, Id = id, Publisher = new Publisher() {Id = pubid, Name = publisher}, Name = name,
-                Year = year
-            };
-            richTextBox1.Text =
-                $"{book.Id} {book.Author} {book.Name} {book.Year} {book.Publisher.Id} {book.Publisher.Name}";*/
+                UpdateRows();
+                labelLog.Text = @"Log: Добавлено";
+            }
         }
 
         private void update_Button_Click(object sender, EventArgs e)
         {
+            UpdateRows();
+        }
+
+        private void UpdateRows()
+        {
+            dataGridView1.Rows.Clear();
             var repo = new BookRepository();
             var book = repo.GetBooks();
             foreach (var item in book)
             {
-                richTextBox1.Text += $"{item.Name} \n";
+                dataGridView1.Rows.Add(item.Id.ToString(), item.Author, item.Name, item.Year, item.Publisher.PubId, item.Publisher.PubName);
+            }
+            labelLog.Text = @"Log: Обновлено";
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            var repo = new BookRepository();
+            if (repo.CreateBook())
+            {
+                labelLog.Text = @"Log: Создано";
             }
         }
     }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.IO;
 using CsvHelper;
+using CsvHelper.Configuration;
 using CSVLabOne.Model;
 
 namespace CSVLabOne.Repository
@@ -35,44 +34,93 @@ namespace CSVLabOne.Repository
 
         public bool AddBook(Book book)
         {
-            var data = new[]
+            var records = new List<Book>
             {
                 new Book()
                 {
                     Id = book.Id,
                     Author = book.Author,
                     Name = book.Name,
-                    Publisher = new Publisher() { Id = book.Publisher.Id, Name = book.Publisher.Name },
+                    Publisher = new Publisher() { PubId = book.Publisher.PubId, PubName = book.Publisher.PubName },
                     Year = book.Year
                 }
-            };
-            using (var writer = new StreamWriter(Path))
-            using (var csvWriter = new CsvWriter(writer))
-            {
-                csvWriter.Configuration.Delimiter = ";";
-                csvWriter.Configuration.HasHeaderRecord = true;
-                csvWriter.Configuration.AutoMap<Book>();
-                try
+            };               
+            try
+            { 
+                var config = new CsvConfiguration()
                 {
-                    csvWriter.WriteHeader<Book>();
-                    csvWriter.WriteRecords(data);
-                    writer.Flush();
-                    return true;
-                }
-                catch
+                    HasHeaderRecord = false,
+                };
+                using (var stream = File.Open(Path, FileMode.Append))
+                using (var writer = new StreamWriter(stream))
+                using (var csv = new CsvWriter(writer, config))
                 {
-                    return false;
+                    csv.WriteRecords(records);
                 }
+                return true;
             }
+            catch
+            {
+                return false;
+            }
+            
         }
 
         public bool DeleteBook(int id)
         {
             return true;
         }
-
+        // do
         public bool UpdateBook(Book book, int id)
         {
+            var records = new List<Book>
+            {
+                new Book()
+                {
+                    Id = book.Id,
+                    Author = book.Author,
+                    Name = book.Name,
+                    Publisher = new Publisher() { PubId = book.Publisher.PubId, PubName = book.Publisher.PubName },
+                    Year = book.Year
+                }
+            };
+
+            // Append to the file.
+            var config = new CsvConfiguration()
+            {
+                // Don't write the header again.
+                HasHeaderRecord = false,
+            };
+            using (var stream = File.Open(Path, FileMode.Append))
+            using (var writer = new StreamWriter(stream))
+            using (var csv = new CsvWriter(writer, config))
+            {
+                csv.WriteRecords(records);
+            }
+
+            return true;
+        }
+
+        //do
+        public bool CreateBook()
+        {
+            var records = new List<Book>
+            {
+                new Book()
+                {
+                    Id = 0,
+                    Author = "",
+                    Name = "",
+                    Publisher = new Publisher() { PubId = 0, PubName = ""},
+                    Year = 0
+                }
+            };
+            using (var writer = new StreamWriter(Path))
+            using (var csv = new CsvWriter(writer))
+            {
+                csv.WriteRecords(records);
+            }
+
             return true;
         }
     }

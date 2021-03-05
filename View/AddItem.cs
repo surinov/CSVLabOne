@@ -5,9 +5,12 @@ using CSVLabOne.Model;
 namespace CSVLabOne.View
 {
     public partial class AddItem : Form
-    {
-        public AddItem()
+    { 
+        
+        private readonly AddBook _addBook;
+        public AddItem(AddBook sender)
         {
+            _addBook = sender;
             InitializeComponent();
         }
 
@@ -16,7 +19,8 @@ namespace CSVLabOne.View
             if (!TextBoxIsNullOrEmpty())
             {
                 var book = MakeBook(textBoxName.Text, textBoxAuthor.Text, textBoxPublisher.Text, int.Parse(textBoxYear.Text));
-                MessageBox.Show($"{book.Id} {book.Name} {book.Author} {book.Year}; {book.Publisher.Id}-{book.Publisher.Name}");
+                _addBook(book);
+                Close();
             }
             else
             {
@@ -40,7 +44,7 @@ namespace CSVLabOne.View
             {
                 Author = author,
                 Id = id,
-                Publisher = new Publisher() { Id = pubid, Name = publisher },
+                Publisher = new Publisher() { PubId = pubid, PubName = publisher },
                 Name = name,
                 Year = year
             };
