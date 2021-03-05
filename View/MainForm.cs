@@ -146,5 +146,10 @@ namespace CSVLabOne
                 return null;
             }
         }
+
+        private void abaut_Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Визуальные средства разработки \nЛабораторная работа 1");
+        }
     }
 }

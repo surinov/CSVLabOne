@@ -45,6 +45,7 @@
             this.IdPub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit_Button = new System.Windows.Forms.Button();
+            this.abaut_Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,11 +214,23 @@
             this.edit_Button.UseVisualStyleBackColor = true;
             this.edit_Button.Click += new System.EventHandler(this.edit_Button_Click);
             // 
+            // abaut_Button
+            // 
+            this.abaut_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abaut_Button.Location = new System.Drawing.Point(15, 530);
+            this.abaut_Button.Name = "abaut_Button";
+            this.abaut_Button.Size = new System.Drawing.Size(75, 23);
+            this.abaut_Button.TabIndex = 11;
+            this.abaut_Button.Text = "About";
+            this.abaut_Button.UseVisualStyleBackColor = true;
+            this.abaut_Button.Click += new System.EventHandler(this.abaut_Button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1059, 565);
+            this.Controls.Add(this.abaut_Button);
             this.Controls.Add(this.edit_Button);
             this.Controls.Add(this.delete_Button);
             this.Controls.Add(this.labelDir);
@@ -254,6 +267,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPub;
         private System.Windows.Forms.DataGridViewTextBoxColumn Publisher;
         private System.Windows.Forms.Button edit_Button;
+        private System.Windows.Forms.Button abaut_Button;
     }
 }
 
