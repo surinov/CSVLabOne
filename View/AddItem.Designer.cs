@@ -117,7 +117,7 @@
             this.add_Button.Name = "add_Button";
             this.add_Button.Size = new System.Drawing.Size(100, 31);
             this.add_Button.TabIndex = 9;
-            this.add_Button.Text = "Добавить";
+            this.add_Button.Text = "Сохранить";
             this.add_Button.UseVisualStyleBackColor = true;
             this.add_Button.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -156,7 +156,8 @@
             this.Name = "AddItem";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddItem";
+            this.Text = "Book";
+            this.Load += new System.EventHandler(this.AddItem_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

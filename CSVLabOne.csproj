@@ -52,6 +52,12 @@
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\Publisher.cs" />
     <Compile Include="Repository\BookRepository.cs" />
+    <Compile Include="View\AddFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddFile.Designer.cs">
+      <DependentUpon>AddFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\AddItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\AddFile.resx">
+      <DependentUpon>AddFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\AddItem.resx">
       <DependentUpon>AddItem.cs</DependentUpon>
     </EmbeddedResource>
