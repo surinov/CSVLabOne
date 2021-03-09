@@ -106,7 +106,6 @@ namespace CSVLabOne.View
                 textBoxName.Text = _name;
                 textBoxPublisher.Text = _pubName;
                 textBoxYear.Text = _year.ToString();
-                add_Button.Text = @"Изменить";
             }
         }
     }

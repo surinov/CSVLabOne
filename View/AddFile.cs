@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using CSVLabOne.Repository;
 
 namespace CSVLabOne.View
 {
@@ -17,11 +16,9 @@ namespace CSVLabOne.View
         private void setPath_button_Click(object sender, EventArgs e)
         {
             var fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == DialogResult.OK)
-            {
-                _path = fbd.SelectedPath;
-                labelPath.Text = _path;
-            }
+            if (fbd.ShowDialog() != DialogResult.OK) return;
+            _path = fbd.SelectedPath;
+            labelPath.Text = _path;
         }
 
         private void create_Button_Click(object sender, EventArgs e)

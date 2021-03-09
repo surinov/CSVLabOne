@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Odbc;
 using System.Windows.Forms;
 using CSVLabOne.Model;
 using CSVLabOne.Repository;
@@ -26,22 +25,18 @@ namespace CSVLabOne
         private void AddBook(Book book)
         {
             var repo = new BookRepository();
-            if (repo.AddBook(book))
-            {
-                UpdateRows();
-                labelLog.Text = @"Log: Добавлено";
-            }
+            if (!repo.AddBook(book)) return;
+            UpdateRows();
+            labelLog.Text = @"Log: Добавлено";
         }
 
         private void EditBook(Book book)
         {
             var repo = new BookRepository();
             repo.DeleteBook(book.Id);
-            if (repo.UpdateBook(book, book.Id))
-            {
-                UpdateRows();
-                labelLog.Text = @"Log: Изменено";
-            }
+            if (!repo.UpdateBook(book, book.Id)) return;
+            UpdateRows();
+            labelLog.Text = @"Log: Изменено";
         }
 
         private void update_Button_Click(object sender, EventArgs e)
@@ -69,12 +64,11 @@ namespace CSVLabOne
 
         private void AddPath(string path)
         {
-            var repo = new BookRepository();
-            repo.Path = path;
+            var repo = new BookRepository {Path = path};
             if (repo.CreateBook())
             {
                 labelLog.Text = @"Log: Путь файла обновлен";
-                labelDir.Text = $"Dir: {path}";
+                labelDir.Text = $@"Dir: {path}";
             }
             else
             {
@@ -84,7 +78,7 @@ namespace CSVLabOne
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            labelDir.Text = $"Dir: {new BookRepository().Path}";
+            labelDir.Text = $@"Dir: {new BookRepository().Path}";
         }
 
         private void open_Button_Click(object sender, EventArgs e)
@@ -96,7 +90,7 @@ namespace CSVLabOne
                 var repo = new BookRepository();
                 repo.Path = path;
                 labelLog.Text = @"Log: Путь файла обновлен";
-                labelDir.Text = $"Dir: {path}";
+                labelDir.Text = $@"Dir: {path}";
             }
         }
 
@@ -134,12 +128,7 @@ namespace CSVLabOne
             {
                 var rowindex = dataGridView1.CurrentCell.RowIndex;
                 var selectedVal = dataGridView1.Rows[rowindex].Cells[item.Index].Value.ToString();
-                if (string.IsNullOrEmpty(selectedVal))
-                {
-                    return null;
-                }
-
-                return selectedVal;
+                return string.IsNullOrEmpty(selectedVal) ? null : selectedVal;
             }
             catch
             {
@@ -149,7 +138,7 @@ namespace CSVLabOne
 
         private void abaut_Button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Визуальные средства разработки \nЛабораторная работа 1");
+            MessageBox.Show(@"Визуальные средства разработки \nЛабораторная работа 1");
         }
     }
 }
