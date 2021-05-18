@@ -36,7 +36,7 @@ namespace CSVLabOne.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!TextBoxIsNullOrEmpty())
+            if (!TextBoxIsNullOrEmpty() && DateCorrect() && IsLessChars())
             {
                 if (Edit)
                 {
@@ -58,10 +58,27 @@ namespace CSVLabOne.View
             }
         }
 
+        private bool DateCorrect()
+        {
+            if (int.Parse(textBoxYear.Text) > 2021)
+            {
+                MessageBox.Show("Некорректная дата");
+                return false;
+            }
+
+            return true;
+        }
+
         private bool TextBoxIsNullOrEmpty()
         {
             return textBoxName.Text == string.Empty || textBoxAuthor.Text == string.Empty || textBoxYear.Text == string.Empty || !int.TryParse(textBoxYear.Text, out var num) ||
                    textBoxPublisher.Text == string.Empty;
+        }
+
+        private bool IsLessChars()
+        {
+            return textBoxName.Text.Length < 55 || textBoxAuthor.Text.Length < 55 || textBoxYear.Text.Length < 55 || !int.TryParse(textBoxYear.Text, out var num) ||
+                   textBoxPublisher.Text.Length < 55;
         }
 
         private Book MakeBook(string name, string author, string publisher, int year)

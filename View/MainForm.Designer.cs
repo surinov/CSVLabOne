@@ -32,18 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.update_Button = new System.Windows.Forms.Button();
-            this.create_Button = new System.Windows.Forms.Button();
-            this.labelLog = new System.Windows.Forms.Label();
-            this.open_Button = new System.Windows.Forms.Button();
-            this.labelDir = new System.Windows.Forms.Label();
-            this.delete_Button = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Publisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.update_Button = new System.Windows.Forms.Button();
+            this.create_Button = new System.Windows.Forms.Button();
+            this.labelLog = new System.Windows.Forms.Label();
+            this.open_Button = new System.Windows.Forms.Button();
+            this.labelDir = new System.Windows.Forms.Label();
+            this.delete_Button = new System.Windows.Forms.Button();
             this.edit_Button = new System.Windows.Forms.Button();
             this.abaut_Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -91,6 +91,55 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1006, 394);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id книги";
+            this.Id.MinimumWidth = 80;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Id.Width = 90;
+            // 
+            // Author
+            // 
+            this.Author.HeaderText = "Автор";
+            this.Author.MinimumWidth = 120;
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            this.Author.Width = 120;
+            // 
+            // NameA
+            // 
+            this.NameA.HeaderText = "Название";
+            this.NameA.MinimumWidth = 125;
+            this.NameA.Name = "NameA";
+            this.NameA.ReadOnly = true;
+            this.NameA.Width = 125;
+            // 
+            // Year
+            // 
+            this.Year.HeaderText = "Год";
+            this.Year.MinimumWidth = 80;
+            this.Year.Name = "Year";
+            this.Year.ReadOnly = true;
+            this.Year.Width = 80;
+            // 
+            // IdPub
+            // 
+            this.IdPub.HeaderText = "Id издателя";
+            this.IdPub.MinimumWidth = 80;
+            this.IdPub.Name = "IdPub";
+            this.IdPub.ReadOnly = true;
+            this.IdPub.Width = 80;
+            // 
+            // Publisher
+            // 
+            this.Publisher.HeaderText = "Издатель";
+            this.Publisher.MinimumWidth = 120;
+            this.Publisher.Name = "Publisher";
+            this.Publisher.ReadOnly = true;
+            this.Publisher.Width = 120;
             // 
             // update_Button
             // 
@@ -154,55 +203,6 @@
             this.delete_Button.UseVisualStyleBackColor = true;
             this.delete_Button.Click += new System.EventHandler(this.delete_Button_Click);
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id книги";
-            this.Id.MinimumWidth = 80;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Id.Width = 90;
-            // 
-            // Author
-            // 
-            this.Author.HeaderText = "Автор";
-            this.Author.MinimumWidth = 120;
-            this.Author.Name = "Author";
-            this.Author.ReadOnly = true;
-            this.Author.Width = 120;
-            // 
-            // NameA
-            // 
-            this.NameA.HeaderText = "Название";
-            this.NameA.MinimumWidth = 125;
-            this.NameA.Name = "NameA";
-            this.NameA.ReadOnly = true;
-            this.NameA.Width = 125;
-            // 
-            // Year
-            // 
-            this.Year.HeaderText = "Год";
-            this.Year.MinimumWidth = 80;
-            this.Year.Name = "Year";
-            this.Year.ReadOnly = true;
-            this.Year.Width = 80;
-            // 
-            // IdPub
-            // 
-            this.IdPub.HeaderText = "Id издателя";
-            this.IdPub.MinimumWidth = 80;
-            this.IdPub.Name = "IdPub";
-            this.IdPub.ReadOnly = true;
-            this.IdPub.Width = 80;
-            // 
-            // Publisher
-            // 
-            this.Publisher.HeaderText = "Издатель";
-            this.Publisher.MinimumWidth = 120;
-            this.Publisher.Name = "Publisher";
-            this.Publisher.ReadOnly = true;
-            this.Publisher.Width = 120;
-            // 
             // edit_Button
             // 
             this.edit_Button.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -219,9 +219,9 @@
             this.abaut_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.abaut_Button.Location = new System.Drawing.Point(15, 530);
             this.abaut_Button.Name = "abaut_Button";
-            this.abaut_Button.Size = new System.Drawing.Size(75, 23);
+            this.abaut_Button.Size = new System.Drawing.Size(155, 23);
             this.abaut_Button.TabIndex = 11;
-            this.abaut_Button.Text = "About";
+            this.abaut_Button.Text = "О программе";
             this.abaut_Button.UseVisualStyleBackColor = true;
             this.abaut_Button.Click += new System.EventHandler(this.abaut_Button_Click);
             // 
