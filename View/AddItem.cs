@@ -60,7 +60,7 @@ namespace CSVLabOne.View
 
         private bool DateCorrect()
         {
-            if (int.Parse(textBoxYear.Text) > 2021)
+            if (int.Parse(textBoxYear.Text) > 2022 && int.Parse(textBoxYear.Text) < 0)
             {
                 MessageBox.Show("Некорректная дата");
                 return false;
