@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CSVLabOne.View
@@ -23,7 +24,7 @@ namespace CSVLabOne.View
 
         private void create_Button_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text != string.Empty)
+            if (textBoxName.Text != string.Empty && IsCharsAndNumbers())
             {
                 SetPath();
                 Close();
@@ -37,6 +38,11 @@ namespace CSVLabOne.View
         private void SetPath()
         {
             _addPath($"{_path}{textBoxName.Text}.csv");
+        }
+
+        private bool IsCharsAndNumbers()
+        {
+            return Regex.IsMatch(textBoxName.Text, @"^[a-zA-Z0-9]+$");
         }
     }
 }
