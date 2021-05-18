@@ -132,6 +132,7 @@ namespace CSVLabOne
             }
             catch
             {
+                MessageBox.Show(@"Не выбрана строка");
                 return null;
             }
         }
